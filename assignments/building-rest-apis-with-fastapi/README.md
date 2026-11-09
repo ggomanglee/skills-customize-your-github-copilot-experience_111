@@ -2,43 +2,46 @@
 
 ## 🎯 Objective
 
-Students will build a small REST API with FastAPI, learning how to define routes, handle JSON requests, and return structured responses.
+Build an in-memory book catalog API with FastAPI. Practice defining REST routes, validating JSON with Pydantic, returning useful HTTP status codes, and testing the API.
 
 ## 📝 Tasks
 
-### 🛠️ Build a FastAPI app
+### 🛠️ Create book collection routes
 
 #### Description
-Create a simple FastAPI application that exposes a few endpoints for managing a small collection of items.
+Complete the starter app so clients can list books and add a new book to an in-memory collection. Each book should have a title and author.
 
 #### Requirements
 Completed program should:
 
-- Define at least three API routes using FastAPI
-- Accept and return JSON payloads
-- Use clear route names and semantic HTTP methods
-- Return appropriate status codes for create and read operations
+- Provide `GET /books` to return all books as JSON
+- Provide `POST /books` to accept a JSON book and add it to the collection
+- Return `201 Created` when a book is added
+- Keep the data in memory; a database is not required
 
-### 🛠️ Add data validation
+### 🛠️ Validate books and retrieve one book
 
 #### Description
-Enhance the API so requests and responses are predictable and well-structured.
+Use a Pydantic model to validate book data, then add a route for looking up one book by its ID.
 
 #### Requirements
 Completed program should:
 
-- Validate incoming request data using Pydantic models
-- Include at least one example model for an item
-- Return consistent response data for success and error cases
+- Require non-empty title and author values in the request model
+- Assign each created book a unique integer ID
+- Provide `GET /books/{book_id}` and return the matching book
+- Return `404 Not Found` when the requested ID does not exist
+- Let FastAPI return a validation error for invalid request data
 
-### 🛠️ Test and document the API
+### 🛠️ Run and test the API
 
 #### Description
-Make the app easier for students and instructors to use by testing the endpoints and documenting the interface.
+Run the app locally and use FastAPI's interactive documentation to exercise each route.
 
 #### Requirements
 Completed program should:
 
-- Use FastAPI's built-in documentation page
-- Provide clear examples of requests and responses
-- Demonstrate how to run the app locally
+- Start the app with `uvicorn starter-code:app --reload`
+- Open `/docs` and test listing, creating, and retrieving books
+- Verify a missing book returns a `404` response and invalid book data is rejected
+- Include one example JSON request and response when presenting the completed work

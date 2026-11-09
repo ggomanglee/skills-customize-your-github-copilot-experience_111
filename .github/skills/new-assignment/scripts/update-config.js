@@ -2,13 +2,24 @@ const fs = require("fs");
 const path = require("path");
 
 const [id, title, description] = process.argv.slice(2);
-const configPath = path.resolve(__dirname, "../../../../config.json");
-const config = JSON.parse(fs.readFileSync(configPath, "utf8"));
 
 if (!id || !title || !description) {
   console.error(
     'Usage: node .github/skills/new-assignment/scripts/update-config.js <id> "<title>" "<description>"',
   );
+  process.exit(1);
+}
+
+const configPath = path.resolve(__dirname, "../../../../config.json");
+const config = JSON.parse(fs.readFileSync(configPath, "utf8"));
+
+if (!Array.isArray(config.assignments)) {
+  console.error("Error: config.json must contain an assignments array");
+  process.exit(1);
+}
+
+if (config.assignments.some((assignment) => assignment.id === id)) {
+  console.error(`Error: Assignment "${id}" is already registered in config.json`);
   process.exit(1);
 }
 

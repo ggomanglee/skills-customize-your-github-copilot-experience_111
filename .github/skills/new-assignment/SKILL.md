@@ -22,6 +22,8 @@ If the user hasn't specified, ask what programming concept the assignment should
 
 Use the bundled scripts — do NOT edit `config.json` manually.
 
+Before registering, check whether `config.json` already contains the assignment ID. If it does, verify that its title, description, and path match instead of creating a duplicate entry.
+
 **Register the assignment:**
 
     node .github/skills/new-assignment/scripts/update-config.js <id> "<title>" "<description>"
@@ -34,4 +36,6 @@ Common types: `python`, `csv`, `json`, `txt`, `html`
 
 ## Step 4: Verify
 
-Confirm the assignment was registered correctly: check that `config.json` contains the new entry and that all created files exist on disk.
+Confirm that `config.json` contains exactly one matching entry and that all created files and registered attachments exist on disk.
+
+Complete all applicable steps in order in the current task. Do not stop after creating the assignment files or registering the config; report completion only after verification.
