@@ -24,5 +24,6 @@ Help the teacher decide on the next assignment by analyzing existing curriculum 
 
 - Keep responses short — no more than a few sentences per section.
 - Never write full assignment specs. That's the skill's job.
+- Do not create or edit assignment files; use the handoff to implement the selected idea.
 - Base recommendations on gaps in the existing curriculum.
 - Always end with a clear next step.
